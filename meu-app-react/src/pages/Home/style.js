@@ -1,0 +1,63 @@
+import styled from 'styled-components';
+
+export const Container = styled.h2`
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+`;
+
+export const Body = styled.div`
+    color: black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-right: 2rem;
+`;
+
+export const InitialText = styled.h2`
+    background: ForestGreen;
+    padding-left: 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+`;
+export const Div = styled.div`
+    border: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+`;
+export const Label = styled.h2`
+    border-radius: 0.2rem;
+    font-family: 'Poppins';
+`;
+export const Img = styled.div`
+    cursor: pointer;
+`;
+
+export const List = styled.li`
+    color: Gray;
+    display: inline;
+    float: left;
+    padding-left: 6rem; 
+    padding-right: 6rem;
+    padding-top: 1rem;
+    p {
+        font-size: 17px;
+    }
+    span {
+        font-size: 15px;
+    }
+    li {
+        list-style-type: none;
+    }
+    a {
+        font-size: 21px;
+        color: LimeGreen;
+        text-align: center;
+        &:hover {
+            color: Lime;
+            opacity: 0.8;
+        }
+    }
+`;
