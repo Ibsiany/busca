@@ -3,6 +3,7 @@ import {Container, InitialText, Div, Label, Img, Body, List} from './style';
 import search from '../images/search.ico';
 import create from '../images/cursor.ico';
 import api from '../../services/api';
+import ClickedLinkCount from '../Click/index';
 
 const valoresIniciais = {
   search: "",
@@ -13,7 +14,6 @@ const Home = () => {
 const [buscas, setBusca] = useState([]);
 const [values, setValues] = useState(valoresIniciais);
 const [clicked, setClicked] = useState([false]);
-const [count, setCounter] = useState(0);
 
 function handlerValues(event) {
   let campo = event.target.getAttribute("name");
@@ -35,31 +35,22 @@ useEffect(()=>{
   }, [])
 
   function render_buscas(){
-    function increment() {
-      setCounter(count + 1);
-      console.log(count)
-    }
-    return buscas.map((v)=>
-    <div>
-       <a href={v.url} target="_blank" onClick={increment}>{v.name}</a> 
-       <p>{v.about}</p>
-       <span>{count} visita(s) no site.</span>
-    </div> 
+    // function increment() {
+    //   setCounter(count + 1);
+    //   console.log(count)
+    // }
+    return buscas.map((v)=> (<ClickedLinkCount name={v.name} url={v.url} about={v.about}/>)
+    // <div>
+    //    <a href={v.url} target="_blank" onClick={increment}>{v.name}</a> 
+    //    <p>{v.about}</p>
+    //    <span>{count} visita(s) no site.</span>
+    // </div> 
     )
   }
 
   function render_filtrar(){ 
-    function increment() {
-      setCounter(count + 1);
-      console.log(count) 
-    }
     const filterItems = buscas.filter(x => x.about.toLowerCase().indexOf(values.pesquisa.toLowerCase()) > -1);
-    return filterItems.map((v) =>
-    <div>
-      <a href={v.url} target="_blank" onClick={increment}>{v.name}</a> 
-      <p>{v.about}</p>
-      <span> {count} visita(s) no site.</span>
-    </div>
+    return filterItems.map((v) =>(<ClickedLinkCount name={v.name} url={v.url} about={v.about}/>)
     )
   }
 
