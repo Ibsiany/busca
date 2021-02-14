@@ -41,14 +41,14 @@ function filter(){
   if (values.pesquisa.length > 0) {
     setBusca(list.filter(x => x.about.toLowerCase().indexOf(values.pesquisa.toLowerCase()) > -1))
 } else {
-    setBusca([])
+  window.location.reload();
 }}
 
 return(
   <Container>
     {loading && <IncidentSkeleton />}
-      {!loading &&
-      <>
+    {!loading &&
+    <>
     <InitialText>
       <a 
         href="./">
@@ -59,8 +59,18 @@ return(
         </img>
       </a>
       {/* <Body>
-        <a href="./cadastrar"> <img src={create} alt="Cadastrar" width="65" height="70" border="0"></img>
-        <br></br> <small>Cadastrar</small></a>
+        <a 
+          href="./cadastrar"> 
+          <img 
+            src={create} 
+            alt="Cadastrar" 
+            width="65" 
+            height="70" 
+            border="0">
+          </img>
+          <br></br>
+          <small>Cadastrar</small>
+        </a>
       </Body>  */}
     </InitialText>
     <Div>
