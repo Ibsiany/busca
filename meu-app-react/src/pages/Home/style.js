@@ -21,18 +21,19 @@ export const InitialText = styled.h2`
     align-items: center;
     justify-content: center;
 `;
+
 export const Div = styled.div`
     border: 0;
     display: flex;
     justify-content: center;
     align-items: center;
-`;
-export const Label = styled.h2`
-    border-radius: 0.2rem;
-    font-family: 'Poppins';
-`;
-export const Img = styled.div`
-    cursor: pointer;
+    input {
+        border-radius: 0.2rem;
+        font-family: 'Poppins';
+    }
+    img {
+        cursor: pointer;
+    }
 `;
 
 export const List = styled.li`
