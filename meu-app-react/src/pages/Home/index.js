@@ -4,6 +4,7 @@ import search from '../images/search.ico';
 import create from '../images/cursor.ico';
 import api from '../../services/api';
 import ClickedLinkCount from '../Click/index';
+import IncidentSkeleton from '../load/index';
 
 const valoresIniciais = {
   pesquisa: "",
@@ -14,6 +15,7 @@ const Home = () => {
 const [buscas, setBusca] = useState([]);
 const [values, setValues] = useState(valoresIniciais);
 const [list, setList] = useState([]);
+const [loading, setLoading] = useState(true);
 
 function handlerValues(event) {
   let campo = event.target.getAttribute("name");
@@ -28,6 +30,7 @@ async function fetchData() {
     } catch {
       alert('Confira a api');
     }
+    setLoading(false);
 }
 
 useEffect(()=>{
@@ -43,6 +46,9 @@ function filter(){
 
 return(
   <Container>
+    {loading && <IncidentSkeleton />}
+      {!loading &&
+      <>
     <InitialText>
       <a 
         href="./">
@@ -86,6 +92,8 @@ return(
         </li>
       </ul>
     </List>
+    </>
+}
   </Container> 
 );
 }
