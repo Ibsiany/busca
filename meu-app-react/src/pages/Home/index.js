@@ -6,14 +6,14 @@ import api from '../../services/api';
 import ClickedLinkCount from '../Click/index';
 
 const valoresIniciais = {
-  search: "",
+  pesquisa: "",
 };
  
 const Home = () => {
 
 const [buscas, setBusca] = useState([]);
 const [values, setValues] = useState(valoresIniciais);
-const [clicked, setClicked] = useState([false]);
+const [list, setList] = useState([]);
 
 function handlerValues(event) {
   let campo = event.target.getAttribute("name");
@@ -21,37 +21,27 @@ function handlerValues(event) {
   setValues({ ...values, [campo]: valor });
 }  
 
-
-useEffect(()=>{
-  async function fetchData() {
+async function fetchData() {
     try{
       const response = await api.get('/search');
-      setBusca(response.data);
+      setList(response.data);
     } catch {
       alert('Confira a api');
     }
   }
-  fetchData();
+
+useEffect(()=>{
+  fetchData()
   }, [])
 
-  function render_buscas(){
-    // function increment() {
-    //   setCounter(count + 1);
-    //   console.log(count)
-    // }
-    return buscas.map((v)=> (<ClickedLinkCount name={v.name} url={v.url} about={v.about}/>)
-    // <div>
-    //    <a href={v.url} target="_blank" onClick={increment}>{v.name}</a> 
-    //    <p>{v.about}</p>
-    //    <span>{count} visita(s) no site.</span>
-    // </div> 
-    )
-  }
-
-  function render_filtrar(){ 
-    const filterItems = buscas.filter(x => x.about.toLowerCase().indexOf(values.pesquisa.toLowerCase()) > -1);
-    return filterItems.map((v) =>(<ClickedLinkCount name={v.name} url={v.url} about={v.about}/>)
-    )
+  function filter(){    
+    if (values.pesquisa.length > 0) {
+      setBusca(list.filter(x => x.about.toLowerCase().indexOf(values.pesquisa.toLowerCase()) > -1))
+  } else {
+      setBusca([])
+  } 
+    // const filterItems = list.filter(x => x.about.toLowerCase().indexOf(values.pesquisa.toLowerCase()) > -1);
+    // return filterItems.map((v) =>(<ClickedLinkCount name={v.name} url={v.url} about={v.about}/>))
   }
 
 return(
@@ -69,16 +59,19 @@ return(
     <input id="pesquisa" placeholder="Pesquise aqui" name="pesquisa" values={values.search} onChange={handlerValues}></input>
     </Label>
     <Img>
-      <img href="./" name="button" onClick={() => setClicked(!clicked)} src={search} alt="Procurar" width="60" height="65" ></img>
+      <img href="./" name="button" onClick={() => {filter()}} src={search} alt="Procurar" width="60" height="65" ></img>
     </Img>
   </Div>
   <List>
      <ul> 
        <li>
-           { clicked ? render_buscas() : render_filtrar()}
+          {buscas.length ? 
+          (buscas.map((v) =>(<ClickedLinkCount name={v.name} url={v.url} about={v.about}/>))) : 
+          (list.map((v) => (<ClickedLinkCount name={v.name} url={v.url} about={v.about}/>)))
+          }
+           {/* { clicked ? render_buscas() : render_filtrar()} */}
            {/* { buscas.length > 0 ? render_buscas() : <h2>Nenhum dado registrado </h2> } */}
        </li>
-            
     </ul>
   </List>
   </Container> 
