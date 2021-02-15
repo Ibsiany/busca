@@ -33,6 +33,7 @@ Foram utilizadas as seguintes tecnologias:
 - [Axios](https://github.com/axios/axios)
 - [Babel](https://babeljs.io/)
 - [MySql](https://www.mysql.com/)
+- [NodeJS](https://nodejs.org/en/)
 
 ---
 
