@@ -16,7 +16,7 @@
 - [Sobre](#-sobre)
 - [Tecnologias utilizadas](#-tecnologias-utilizadas)
 - [Sobre o sistema](#-sobre-o-sistema)
-- [Como baixar o projeto](#-como-baixar-o-projeto)
+- [Como baixar o projeto](#como-baixar-o-projeto)
 
 ## 👀 Sobre
 
