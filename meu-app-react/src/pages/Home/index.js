@@ -58,20 +58,22 @@ return(
           border="0">
         </img>
       </a>
-      {/* <Body>
-        <a 
-          href="./cadastrar"> 
-          <img 
-            src={create} 
-            alt="Cadastrar" 
-            width="65" 
-            height="70" 
-            border="0">
-          </img>
-          <br></br>
-          <small>Cadastrar</small>
-        </a>
-      </Body>  */}
+      <Body>
+        <small>
+          <a 
+            href="./cadastrar"> 
+            <img 
+              src={create} 
+              alt="Cadastrar" 
+              width="65" 
+              height="80" 
+              border="0">
+            </img>
+            <br></br>
+            <small>Cadastrar</small>
+          </a>
+        </small>
+      </Body> 
     </InitialText>
     <Div>
         <input 

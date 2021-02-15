@@ -12,6 +12,15 @@ export const Body = styled.div`
     justify-content: center;
     align-items: center;
     padding-right: 2rem;
+    a {
+        color: white;
+        padding-bottom: 1rem;
+        font-size: 100;
+        &:hover {
+            color: LimeGreen;
+            opacity: 0.8;
+        }
+    }
 `;
 
 export const InitialText = styled.h2`
@@ -19,7 +28,7 @@ export const InitialText = styled.h2`
     padding-left: 2rem;
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: space-between;
 `;
 
 export const Div = styled.div`
