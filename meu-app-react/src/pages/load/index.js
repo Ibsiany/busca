@@ -7,6 +7,7 @@ function ComponentSkeleton() {
     <Container>
         <InitialText>
             <Skeleton height={40} width={300} />
+            <Skeleton height={90} width={80} />
         </InitialText>
         <Div>
             <Skeleton height={30} width={300} />
